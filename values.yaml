@@ -35,6 +35,24 @@ env:
   IDENTITY_SERVICE_URL: "http://identity-service:8080"
   MARKETPLACE_SERVICE_URL: "http://marketplace-service:8080"
   PAYMENT_SERVICE_URL: "http://payment-service:8080"
+  identity-service: "cluster.local/ns/fitnest-dev/sa/identity-service"
+  marketplace-service: "cluster.local/ns/fitnest-dev/sa/marketplace-service"
+  payment-service: "cluster.local/ns/fitnest-dev/sa/payment-service"
+  api-gateway: "cluster.local/ns/fitnest-dev/sa/api-gateway"
+
+livenessProbe:
+  httpGet:
+    path: /actuator/health
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 15
+readinessProbe:
+  httpGet:
+    path: /actuator/health
+    port: http
+  initialDelaySeconds: 20
+  periodSeconds: 10
+
 resources:
   requests:
     cpu: 100m
