@@ -29,8 +29,13 @@ spec:
     - operation:
         methods: ["GET", "POST", "PUT", "DELETE"]
         paths:
-          - "/api/v1/orders/*"
           - "/api/v1/orders/**"
+          - "/api/v1/subscription-packages"
+          - "/api/v1/subscription-packages/**"
+          - "/api/v1/me/subscriptions"
+          - "/api/v1/me/subscriptions/**"
+          - "/api/v1/subscriptions/upgrade"
+          - "/api/v1/subscriptions/upgrade/**"
           - "/v3/api-docs/*"
           - "/v3/api-docs"
           - "/swagger-ui/*"
