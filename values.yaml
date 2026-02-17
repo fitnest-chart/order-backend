@@ -47,10 +47,7 @@ env:
   api-gateway: "cluster.local/ns/fitnest-dev/sa/api-gateway"
   JAVA_OPTS: "-XX:TieredStopAtLevel=1 -Xss256k -Xmx448m"
 
-
-
 resources:
-  enabled: true
   limits:
     memory: 512Mi
     cpu: 500m
