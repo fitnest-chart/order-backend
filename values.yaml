@@ -17,7 +17,7 @@ istio:
   authorization:
     internalCallers:
       - "cluster.local/ns/fitnest-dev/sa/identity-service"
-      - "cluster.local/ns/fitnest-dev/sa/marketplace-service"
+      - "cluster.local/ns/fitnest-dev/sa/catalog-service"
       - "cluster.local/ns/fitnest-dev/sa/payment-service"
       - "cluster.local/ns/fitnest-dev/sa/api-gateway"
 hpa:
@@ -40,10 +40,10 @@ env:
   JWT_SECRET: "your-jwt-secret-change-in-production"
   JWT_ISSUER: "fitnest"
   IDENTITY_SERVICE_URL: "http://identity-service:8080"
-  MARKETPLACE_SERVICE_URL: "http://marketplace-service:8080"
+  CATALOG_SERVICE_URL: "http://catalog-service:8080"
   PAYMENT_SERVICE_URL: "http://payment-service:8080"
   identity-service: "cluster.local/ns/fitnest-dev/sa/identity-service"
-  marketplace-service: "cluster.local/ns/fitnest-dev/sa/marketplace-service"
+  catalog-service: "cluster.local/ns/fitnest-dev/sa/catalog-service"
   payment-service: "cluster.local/ns/fitnest-dev/sa/payment-service"
   api-gateway: "cluster.local/ns/fitnest-dev/sa/api-gateway"
   JAVA_OPTS: "-Xmx384m -Xms192m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xss256k"
