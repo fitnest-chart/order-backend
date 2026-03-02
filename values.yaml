@@ -47,7 +47,7 @@ env:
   catalog-service: "cluster.local/ns/fitnest-dev/sa/catalog-service"
   payment-service: "cluster.local/ns/fitnest-dev/sa/payment-service"
   api-gateway: "cluster.local/ns/fitnest-dev/sa/api-gateway"
-  JAVA_OPTS: "-Xmx384m -Xms192m -XX:+UseZGC -XX:+ZGenerational -Xss256k"
+  JAVA_OPTS: "-Xmx384m -Xms192m -XX:+UseZGC -Xss256k"
 resources:
   limits:
     memory: 512Mi
