@@ -47,11 +47,11 @@ env:
   catalog-service: "cluster.local/ns/fitnest-dev/sa/catalog-service"
   payment-service: "cluster.local/ns/fitnest-dev/sa/payment-service"
   api-gateway: "cluster.local/ns/fitnest-dev/sa/api-gateway"
-  JAVA_OPTS: "-Xmx384m -Xms192m -XX:+UseZGC -Xss256k"
+  JAVA_OPTS: "-Xmx640m -Xms384m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+ParallelRefProcEnabled -XX:MaxMetaspaceSize=192m -Xss512k -XX:+ExitOnOutOfMemoryError"
 resources:
   limits:
     memory: 1024Mi
     cpu: 1000m
   requests:
     cpu: 500m
-    memory: 512Mi
+    memory: 700Mi
