@@ -50,8 +50,8 @@ env:
   JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=50 -XX:InitialRAMPercentage=25 -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+ParallelRefProcEnabled -XX:MaxMetaspaceSize=96m -Xss512k -XX:+ExitOnOutOfMemoryError"
 resources:
   limits:
-    memory: 512Mi
-    cpu: 500m
+    memory: 1Gi
+    cpu: 1000m
   requests:
-    cpu: 100m
-    memory: 256Mi
+    cpu: 500m
+    memory: 512Mi
