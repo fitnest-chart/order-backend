@@ -1,4 +1,4 @@
-replicaCount: 1
+replicaCount: 2
 image:
   repository: ghcr.io/fitnest-backend/order-service
   tag: "development-9d02e69"
@@ -47,11 +47,20 @@ env:
   catalog-service: "cluster.local/ns/fitnest-dev/sa/catalog-service"
   payment-service: "cluster.local/ns/fitnest-dev/sa/payment-service"
   api-gateway: "cluster.local/ns/fitnest-dev/sa/api-gateway"
-  JAVA_TOOL_OPTIONS: "-Xms256m -Xmx400m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+ParallelRefProcEnabled -XX:MaxMetaspaceSize=128m -Xss512k -XX:+ExitOnOutOfMemoryError"
+  JAVA_TOOL_OPTIONS: >
+    -Xms256m
+    -Xmx512m
+    -XX:+UseG1GC
+    -XX:MaxGCPauseMillis=200
+    -XX:+ParallelRefProcEnabled
+    -XX:MaxMetaspaceSize=160m
+    -XX:+AlwaysPreTouch
+    -Xss512k
+    -XX:+ExitOnOutOfMemoryError
 resources:
   requests:
-    cpu: 200m
-    memory: 500Mi
+    cpu: 250m
+    memory: 512Mi
   limits:
-    cpu: 500m
-    memory: 800Mi
+    cpu: 1200m
+    memory: 1Gi
