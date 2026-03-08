@@ -48,19 +48,19 @@ env:
   payment-service: "cluster.local/ns/fitnest-dev/sa/payment-service"
   api-gateway: "cluster.local/ns/fitnest-dev/sa/api-gateway"
   JAVA_TOOL_OPTIONS: >
-    -Xms256m
-    -Xmx512m
+    -Xms128m
+    -Xmx384m
     -XX:+UseG1GC
     -XX:MaxGCPauseMillis=200
     -XX:+ParallelRefProcEnabled
-    -XX:MaxMetaspaceSize=160m
+    -XX:MaxMetaspaceSize=128m
     -XX:+AlwaysPreTouch
     -Xss512k
     -XX:+ExitOnOutOfMemoryError
 resources:
   requests:
-    cpu: 250m
-    memory: 512Mi
+    cpu: 150m
+    memory: 384Mi
   limits:
-    cpu: 1200m
-    memory: 1Gi
+    cpu: 800m
+    memory: 768Mi
