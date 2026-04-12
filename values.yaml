@@ -39,9 +39,9 @@ env:
   KAFKA_BOOTSTRAP_SERVERS: "10.0.0.4:9092"
   JWT_SECRET: "your-jwt-secret-change-in-production"
   JWT_ISSUER: "fitnest"
-  IDENTITY_SERVICE_URL: "http://identity-backend:8080"
-  CATALOG_SERVICE_URL: "http://catalog-backend:8080"
-  PAYMENT_SERVICE_URL: "http://payment-backend:8080"
+  IDENTITY_BACKEND_URL: "http://identity-backend:8080"
+  CATALOG_BACKEND_URL: "http://catalog-backend:8080"
+  PAYMENT_BACKEND_URL: "http://payment-backend:8080"
   JAVA_TOOL_OPTIONS: >
     -Xms256m -Xmx512m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+ParallelRefProcEnabled -XX:MaxMetaspaceSize=256m -XX:+AlwaysPreTouch -Xss512k -XX:+ExitOnOutOfMemoryError
 
