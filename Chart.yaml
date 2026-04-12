@@ -1,6 +1,6 @@
 apiVersion: v2
-name: order-service
-description: A Helm chart for order-service
+name: order-backend
+description: A Helm chart for order-backend
 type: application
 version: 1.0.0
 appVersion: "1.0.0"

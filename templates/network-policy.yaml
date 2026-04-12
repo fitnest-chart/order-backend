@@ -2,17 +2,17 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: {{ include "order-service.fullname" . }}-ingress
+  name: {{ include "app.fullname" . }}-ingress
   labels:
-    {{- include "order-service.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
 spec:
   podSelector:
     matchLabels:
-      {{- include "order-service.selectorLabels" . | nindent 6 }}
+      {{- include "app.selectorLabels" . | nindent 6 }}
   policyTypes:
     - Ingress
   ingress:
-    # Allow traffic from api-gateway pods
+    # Rule 1: Allow traffic from api-gateway
     - from:
         - podSelector:
             matchLabels:
@@ -22,8 +22,8 @@ spec:
           protocol: TCP
         - port: {{ .Values.service.grpcPort }}
           protocol: TCP
+    # Rule 2: Allow traffic from additional internal services (if defined)
     {{- if .Values.networkPolicy.allowedServices }}
-    # Allow traffic from additional internal services
     - from:
         {{- range .Values.networkPolicy.allowedServices }}
         - podSelector:
