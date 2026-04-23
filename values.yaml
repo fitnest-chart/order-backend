@@ -1,56 +1,32 @@
-vaultEnv: development
-# values.yaml for order-backend
-
-replicaCount: 1
-image:
-  repository: ghcr.io/fitnest-code/order-backend
-  tag: "development-c92d9c6"
-  pullPolicy: IfNotPresent
-  imagePullSecrets:
-    - name: ghcr-secret
-service:
-  type: ClusterIP
-  port: 8080
-  grpcPort: 9090
-networkPolicy:
-  enabled: true
-  allowedServices:
-    - identity-backend
-    - catalog-backend
-    - payment-backend
-    - user-backend
-    # gateway-backend is already hardcoded in the policy template
 hpa:
+  cpuUtilization: '90'
   enabled: false
-  minReplicas: "1"
-  maxReplicas: "3"
-  cpuUtilization: "90"
-  memoryUtilization: "450Mi"
-env:
-  SPRING_PROFILES_ACTIVE: dev
-  SPRINGDOC_SERVER_URL: "https://dev-api.fitnest.az"
-  SPRING_DATASOURCE_URL: "jdbc:postgresql://10.0.0.4:5432/fitnest_order?sslmode=disable"
-  SPRING_DATASOURCE_USERNAME: "postgres"
-  SPRING_DATASOURCE_DRIVER_CLASS_NAME: "org.postgresql.Driver"
-  SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
-  SPRING_DATA_REDIS_HOST: "10.0.0.4"
-  SPRING_DATA_REDIS_PORT: "6380"
-  KAFKA_BOOTSTRAP_SERVERS: "10.0.0.4:9092"
-  JWT_ISSUER: "fitnest"
-  IDENTITY_BACKEND_URL: "http://identity-backend:8080"
-  CATALOG_BACKEND_URL: "http://catalog-backend:8080"
-  PAYMENT_BACKEND_URL: "http://payment-backend:8080"
-  JAVA_TOOL_OPTIONS: >
-    -Xms256m -Xmx512m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+ParallelRefProcEnabled -XX:MaxMetaspaceSize=256m -XX:+AlwaysPreTouch -Xss512k -XX:+ExitOnOutOfMemoryError
-
-  LOGGING_LEVEL_ROOT: "DEBUG"
-  LOGGING_LEVEL_AZ_FITNEST_ORDER: "DEBUG"
-  LOGGING_PATTERN_CONSOLE: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
-  LOGGING_PATTERN_FILE: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  maxReplicas: '3'
+  memoryUtilization: 450Mi
+  minReplicas: '1'
+image:
+  imagePullSecrets:
+  - name: ghcr-secret
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/fitnest-code/order-backend
+  tag: development-c92d9c6
+networkPolicy:
+  allowedServices:
+  - identity-backend
+  - catalog-backend
+  - payment-backend
+  - user-backend
+  enabled: true
+replicaCount: 1
 resources:
-  requests:
-    cpu: 17m
-    memory: 716Mi
   limits:
     cpu: 1000m
     memory: 1102Mi
+  requests:
+    cpu: 17m
+    memory: 716Mi
+service:
+  grpcPort: 9090
+  port: 8080
+  type: ClusterIP
+vaultEnv: development
