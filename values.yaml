@@ -6,16 +6,16 @@ hpa:
   minReplicas: '1'
 image:
   imagePullSecrets:
-  - name: ghcr-secret
+    - name: ghcr-secret
   pullPolicy: IfNotPresent
   repository: ghcr.io/fitnest-code/order-backend
   tag: development-24cc0f7
 networkPolicy:
   allowedServices:
-  - identity-backend
-  - catalog-backend
-  - payment-backend
-  - user-backend
+    - identity-backend
+    - catalog-backend
+    - payment-backend
+    - user-backend
   enabled: true
 replicaCount: 1
 resources:
