@@ -9,7 +9,7 @@ image:
     - name: ghcr-secret
   pullPolicy: IfNotPresent
   repository: ghcr.io/fitnest-code/order-backend
-  tag: production-16427ee
+  tag: development-84e29c6
 networkPolicy:
   allowedServices:
     - identity-backend
@@ -29,4 +29,7 @@ service:
   grpcPort: 9090
   port: 8080
   type: ClusterIP
-vaultEnv: production
+vaultEnv: development
+database:
+  hikariMaxPool: 30
+  hikariMinIdle: 10
